@@ -1,15 +1,20 @@
-// 🔹 Firebase 설정 (Firebase Console에서 복사한 설정값으로 변경하세요)
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDgoWXLCCHfgUIyhH3HT01uDGqqeTbffYA",
+  authDomain: "my-login-site-5cd7f.firebaseapp.com",
+  projectId: "my-login-site-5cd7f",
+  storageBucket: "my-login-site-5cd7f.firebasestorage.app",
+  messagingSenderId: "784735431463",
+  appId: "1:784735431463:web:97d38c1bcd28ff47b91702"
 };
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 // 🔹 Google 로그인
 document.getElementById("googleLogin").addEventListener("click", () => {
@@ -53,3 +58,4 @@ auth.onAuthStateChanged(user => {
     document.getElementById("user-section").style.display = "none";
   }
 });
+
