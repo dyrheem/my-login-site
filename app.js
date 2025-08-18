@@ -24,6 +24,11 @@ const firebaseConfig = {
   appId: "1:784735431463:web:ce092fe795913e28b91702"
 };
 
+
+// Firebase 초기화
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
 // Firebase 초기화
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -75,4 +80,5 @@ onAuthStateChanged(auth, (user) => {
     userInfo.style.display = "none";
   }
 });
+
 
