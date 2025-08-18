@@ -1,25 +1,23 @@
-// Firebase SDK import
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCM-zs81CxoaGnE1tblGmmqmRzl7ikT530",
-  authDomain: "login-site-9b171.firebaseapp.com",
-  projectId: "login-site-9b171",
-  storageBucket: "login-site-9b171.firebasestorage.app",
-  messagingSenderId: "825852109510",
-  appId: "1:825852109510:web:7e13256b04bd64b2c32dc7"
+  apiKey: "AIzaSyDgoWXLCCHfgUIyhH3HT01uDGqqeTbffYA",
+  authDomain: "my-login-site-5cd7f.firebaseapp.com",
+  projectId: "my-login-site-5cd7f",
+  storageBucket: "my-login-site-5cd7f.firebasestorage.app",
+  messagingSenderId: "784735431463",
+  appId: "1:784735431463:web:efa52b22ebdb22ecb91702"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+
+
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
@@ -59,3 +57,4 @@ onAuthStateChanged(auth, (user) => {
     logoutBtn.style.display = "none";
   }
 });
+
