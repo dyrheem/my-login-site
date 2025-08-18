@@ -1,4 +1,3 @@
-
 // Firebase SDK 불러오기
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
@@ -19,10 +18,9 @@ const firebaseConfig = {
   appId: "1:784735431463:web:ce092fe795913e28b91702"
 };
 
-
 // Firebase 초기화
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 // DOM 요소
 const emailEl = document.getElementById("email");
@@ -71,7 +69,3 @@ onAuthStateChanged(auth, (user) => {
     userInfo.style.display = "none";
   }
 });
-
-
-
-
