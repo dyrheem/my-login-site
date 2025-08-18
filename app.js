@@ -3,6 +3,18 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+
+// Firebase SDK 불러오기
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDgoWXLCCHfgUIyhH3HT01uDGqqeTbffYA",
@@ -13,48 +25,55 @@ const firebaseConfig = {
   appId: "1:784735431463:web:efa52b22ebdb22ecb91702"
 };
 
-// Initialize Firebase
+
+// Firebase 초기화
 const app = initializeApp(firebaseConfig);
-
-
-
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
 
 // DOM 요소
-const statusEl = document.getElementById("status");
+const emailEl = document.getElementById("email");
+const passwordEl = document.getElementById("password");
+const signupBtn = document.getElementById("signupBtn");
 const loginBtn = document.getElementById("loginBtn");
 const logoutBtn = document.getElementById("logoutBtn");
+const statusEl = document.getElementById("status");
+const authForm = document.getElementById("authForm");
+const userInfo = document.getElementById("userInfo");
 
-// 로그인 버튼
+// 회원가입
+signupBtn.addEventListener("click", async () => {
+  try {
+    await createUserWithEmailAndPassword(auth, emailEl.value, passwordEl.value);
+    alert("회원가입 성공!");
+  } catch (err) {
+    alert("회원가입 실패: " + err.message);
+  }
+});
+
+// 로그인
 loginBtn.addEventListener("click", async () => {
   try {
-    await signInWithPopup(auth, provider);
+    await signInWithEmailAndPassword(auth, emailEl.value, passwordEl.value);
+    alert("로그인 성공!");
   } catch (err) {
-    console.error(err);
-    alert("로그인 실패");
+    alert("로그인 실패: " + err.message);
   }
 });
 
-// 로그아웃 버튼
+// 로그아웃
 logoutBtn.addEventListener("click", async () => {
-  try {
-    await signOut(auth);
-  } catch (err) {
-    console.error(err);
-  }
+  await signOut(auth);
 });
 
-// 로그인 상태 감지
+// 로그인 상태 변화 감지
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    statusEl.textContent = `✅ 로그인됨: ${user.email}`;
-    loginBtn.style.display = "none";
-    logoutBtn.style.display = "inline-block";
+    statusEl.textContent = `로그인됨: ${user.email}`;
+    authForm.style.display = "none";
+    userInfo.style.display = "block";
   } else {
-    statusEl.textContent = "❌ 로그인되지 않음";
-    loginBtn.style.display = "inline-block";
-    logoutBtn.style.display = "none";
+    statusEl.textContent = "로그인 상태: 없음";
+    authForm.style.display = "block";
+    userInfo.style.display = "none";
   }
 });
-
