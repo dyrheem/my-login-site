@@ -14,7 +14,6 @@ import {
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDgoWXLCCHfgUIyhH3HT01uDGqqeTbffYA",
@@ -22,9 +21,8 @@ const firebaseConfig = {
   projectId: "my-login-site-5cd7f",
   storageBucket: "my-login-site-5cd7f.firebasestorage.app",
   messagingSenderId: "784735431463",
-  appId: "1:784735431463:web:efa52b22ebdb22ecb91702"
+  appId: "1:784735431463:web:ce092fe795913e28b91702"
 };
-
 
 // Firebase 초기화
 const app = initializeApp(firebaseConfig);
@@ -77,3 +75,4 @@ onAuthStateChanged(auth, (user) => {
     userInfo.style.display = "none";
   }
 });
+
