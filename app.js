@@ -1,8 +1,3 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 
 // Firebase SDK 불러오기
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
@@ -76,6 +71,7 @@ onAuthStateChanged(auth, (user) => {
     userInfo.style.display = "none";
   }
 });
+
 
 
 
