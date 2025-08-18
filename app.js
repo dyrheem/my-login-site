@@ -29,10 +29,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// Firebase 초기화
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
 // DOM 요소
 const emailEl = document.getElementById("email");
 const passwordEl = document.getElementById("password");
@@ -80,5 +76,6 @@ onAuthStateChanged(auth, (user) => {
     userInfo.style.display = "none";
   }
 });
+
 
 
