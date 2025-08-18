@@ -2,19 +2,27 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>Firebase 로그인 데모</title>
+    <title>Firebase 이메일 로그인 데모</title>
     <script type="module" src="./app.js"></script>
     <style>
       body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-      button { padding: 10px 20px; margin: 10px; border: none; border-radius: 6px; }
-      .login { background: #4285f4; color: white; }
-      .logout { background: #db4437; color: white; }
+      input, button { margin: 5px; padding: 8px; }
     </style>
   </head>
   <body>
-    <h1>Firebase 로그인 데모</h1>
-    <p id="status">⏳ 로그인 상태 확인 중...</p>
-    <button id="loginBtn" class="login">Google 로그인</button>
-    <button id="logoutBtn" class="logout" style="display:none;">로그아웃</button>
+    <h1>Firebase 이메일 로그인</h1>
+    
+    <div id="authForm">
+      <input id="email" type="email" placeholder="이메일" />
+      <input id="password" type="password" placeholder="비밀번호" />
+      <br />
+      <button id="signupBtn">회원가입</button>
+      <button id="loginBtn">로그인</button>
+    </div>
+    
+    <div id="userInfo" style="display:none;">
+      <p id="status">로그인 상태: 없음</p>
+      <button id="logoutBtn">로그아웃</button>
+    </div>
   </body>
 </html>
