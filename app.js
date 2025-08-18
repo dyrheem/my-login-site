@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDgoWXLCCHfgUIyhH3HT01uDGqqeTbffYA",
-  authDomain: "my-login-site-5cd7f.firebaseapp.com",
-  projectId: "my-login-site-5cd7f",
-  storageBucket: "my-login-site-5cd7f.firebasestorage.app",
-  messagingSenderId: "784735431463",
-  appId: "1:784735431463:web:97d38c1bcd28ff47b91702"
+  apiKey: "AIzaSyCM-zs81CxoaGnE1tblGmmqmRzl7ikT530",
+  authDomain: "login-site-9b171.firebaseapp.com",
+  projectId: "login-site-9b171",
+  storageBucket: "login-site-9b171.firebasestorage.app",
+  messagingSenderId: "825852109510",
+  appId: "1:825852109510:web:7e13256b04bd64b2c32dc7"
 };
 
 // Initialize Firebase
@@ -58,4 +58,5 @@ auth.onAuthStateChanged(user => {
     document.getElementById("user-section").style.display = "none";
   }
 });
+
 
