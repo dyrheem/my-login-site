@@ -9,40 +9,55 @@ const firebaseConfig = {
   appId: "1:784735431463:web:ce092fe795913e28b91702"
 };
 
+// Firebase 초기화
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
+// 회원가입
 function signup() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+
   auth.createUserWithEmailAndPassword(email, password)
-    .then(user => alert("회원가입 성공"))
-    .catch(err => alert(err.message));
+    .then(userCredential => {
+      alert("✅ 회원가입 성공: " + userCredential.user.email);
+    })
+    .catch(error => {
+      alert("❌ 오류: " + error.message);
+    });
 }
 
+// 로그인
 function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  auth.signInWithEmailAndPassword(email, password)
-    .then(user => alert("로그인 성공"))
-    .catch(err => alert(err.message));
-}
-logoutBtn.addEventListener("click", async () => {
-  await signOut(auth);
-});
 
-// 로그인 상태 변화 감지
-onAuthStateChanged(auth, (user) => {
+  auth.signInWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      alert("✅ 로그인 성공: " + userCredential.user.email);
+    })
+    .catch(error => {
+      alert("❌ 오류: " + error.message);
+    });
+}
+
+// 로그아웃
+function logout() {
+  auth.signOut()
+    .then(() => {
+      alert("🚪 로그아웃 성공");
+    })
+    .catch(error => {
+      alert("❌ 오류: " + error.message);
+    });
+}
+
+// 로그인 상태 확인 리스너
+auth.onAuthStateChanged(user => {
+  const status = document.getElementById("status");
   if (user) {
-    statusEl.textContent = `로그인됨: ${user.email}`;
-    authForm.style.display = "none";
-    userInfo.style.display = "block";
+    status.innerText = "로그인 상태: " + user.email;
   } else {
-    statusEl.textContent = "로그인 상태: 없음";
-    authForm.style.display = "block";
-    userInfo.style.display = "none";
+    status.innerText = "로그인 상태: 없음";
   }
 });
-
-
-
