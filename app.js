@@ -1,13 +1,3 @@
-// Firebase SDK 불러오기
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -70,4 +60,5 @@ onAuthStateChanged(auth, (user) => {
     userInfo.style.display = "none";
   }
 });
+
 
