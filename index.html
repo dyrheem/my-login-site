@@ -2,19 +2,23 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Firebase 로그인</title>
+  <title>Firebase v8 로그인 예제</title>
 </head>
 <body>
-  <h2>로그인</h2>
-  <input type="email" id="email" placeholder="이메일">
-  <input type="password" id="password" placeholder="비밀번호">
-  <button id="loginBtn">로그인</button>
+  <h2>Firebase v8 로그인 샘플</h2>
 
-  <!-- Firebase SDK (Authentication 포함) -->
+  <input type="email" id="email" placeholder="이메일 입력"><br>
+  <input type="password" id="password" placeholder="비밀번호 입력"><br><br>
+
+  <button onclick="signup()">회원가입</button>
+  <button onclick="login()">로그인</button>
+  <button onclick="logout()">로그아웃</button>
+
+  <p id="status">로그인 상태: 없음</p>
+
+  <!-- Firebase v8 SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-
-  <!-- 내 앱 로직 -->
   <script src="app.js"></script>
 </body>
 </html>
