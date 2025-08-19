@@ -9,41 +9,24 @@ const firebaseConfig = {
   appId: "1:784735431463:web:ce092fe795913e28b91702"
 };
 
-// Firebase 초기화
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-// DOM 요소
-const emailEl = document.getElementById("email");
-const passwordEl = document.getElementById("password");
-const signupBtn = document.getElementById("signupBtn");
-const loginBtn = document.getElementById("loginBtn");
-const logoutBtn = document.getElementById("logoutBtn");
-const statusEl = document.getElementById("status");
-const authForm = document.getElementById("authForm");
-const userInfo = document.getElementById("userInfo");
+function signup() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(user => alert("회원가입 성공"))
+    .catch(err => alert(err.message));
+}
 
-// 회원가입
-signupBtn.addEventListener("click", async () => {
-  try {
-    await createUserWithEmailAndPassword(auth, emailEl.value, passwordEl.value);
-    alert("회원가입 성공!");
-  } catch (err) {
-    alert("회원가입 실패: " + err.message);
-  }
-});
-
-// 로그인
-loginBtn.addEventListener("click", async () => {
-  try {
-    await signInWithEmailAndPassword(auth, emailEl.value, passwordEl.value);
-    alert("로그인 성공!");
-  } catch (err) {
-    alert("로그인 실패: " + err.message);
-  }
-});
-
-// 로그아웃
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  auth.signInWithEmailAndPassword(email, password)
+    .then(user => alert("로그인 성공"))
+    .catch(err => alert(err.message));
+}
 logoutBtn.addEventListener("click", async () => {
   await signOut(auth);
 });
@@ -60,5 +43,6 @@ onAuthStateChanged(auth, (user) => {
     userInfo.style.display = "none";
   }
 });
+
 
 
